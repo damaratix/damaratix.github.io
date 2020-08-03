@@ -3,3 +3,7 @@ it turns out that Fedora now uses libxcrypt, so in order to have things working 
 
 # dnf install libxcrypt-compat
 
+(ensure you run systemctl start docker)
+
+
+
