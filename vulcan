@@ -5,11 +5,17 @@ it turns out that Fedora now uses libxcrypt, so in order to have things working 
 # dnf install libxcrypt-compat
 
 (ensure you run systemctl start docker)
+contro: a bit overestimated
 
 #solution #2
 using travis
 
+contro: stop builds
+https://github.com/aquasecurity/trivy-ci-test
+
 #solution #3 
 using k8 app
+
+
 
 
