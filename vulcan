@@ -1,0 +1,5 @@
+at first installation  biber complains that it cannot find the shared library libcrypt.so.1.
+it turns out that Fedora now uses libxcrypt, so in order to have things working you've got to 
+
+# dnf install libxcrypt-compat
+
