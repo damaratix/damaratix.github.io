@@ -1,0 +1,8 @@
+suppose VM 10.137.0.42 and 10.137.0.43
+in firewall: 
+iptables -I FORWARD 1 -s 10.137.0.43  -d 10.137.0.42 -m state --state NEW  -p tcp -m tcp -j ACCEPT
+iptables -I FORWARD 1 -d 10.137.0.42  -s 10.137.0.43 -m state --state NEW  -p tcp -m tcp -j ACCEPT
+
+
+in each VM in /rw/config/qubes-firewall-user-script
+iptables -I INPUT 1 -p tcp -s 10.137.0.4[2|3] -m conntrack --ctstate NEW -j ACCEPT
