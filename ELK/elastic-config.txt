@@ -1,0 +1,23 @@
+After installing in a VM those issues will arise: 
+
+============================================
+1) boot failed because of: 
+max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+
+to make it persistent add in 
+$ vi /etc/sysctl.conf
+vm.max_map_count=26144
+$ sudo sysctl -p 
+
+in debian sysctl is in  procps package
+
+============================================
+2) the default discovery settings are unsuitable for production use; at least one of [discovery.seed_hosts, discovery.seed_providers, cluster.initial_master_nodes] must be configured
+
+$ vi ./config/elasticsearch.yml
+node.data: true
+network.host: 0.0.0.0
+discovery.seed_hosts: ["localhost","127.0.0.1"]
+cluster.initial_master_nodes: []
+
+now ./bin/elastic will work !
