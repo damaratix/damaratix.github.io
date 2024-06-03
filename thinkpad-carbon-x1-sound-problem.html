@@ -1,0 +1,28 @@
+<pre>
+Thinkpad X1 Carbon 7Gen  (Qubes and Fedora)
+
+The main problem right now is the microphone, no way to activate it (a part from using headphone ..
+but then you can speak but you can't hear!)
+
+the scenario:
+$ lspci --nnk | grep A2 audio
+$ lsmod | grep 'snd_'
+$ sudo dmesg | grep -i audio    # to inspect some error
+
+Not fixed yet ... it's a long road ..
+taken from https://bugzilla.kernel.org/show_bug.cgi?id=201251#c145
+
+/etc/modprobe.d/alsa.conf
+options snd-intel-dpcfg dsp_driver=2  # still to test
+
+
+Fix enabling the subwoofer
+**ALSA**
+taken from: https://forums.lenovo.com/t5/Ubuntu/Guide-X1-Carbon-7th-Generation-Ubuntu-compatability/td-p/4489823"
+
+/etc/pulse/daemon.conf
+enable-lfe-remixing = yes
+lfe-crossover-freq = 250
+
+in pavucontrol should appear some more voices now.
+</pre>
